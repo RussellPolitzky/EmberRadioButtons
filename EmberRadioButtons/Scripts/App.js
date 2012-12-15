@@ -1,6 +1,5 @@
-﻿
+﻿/// <reference path="../Libs/JQuery/jquery.js" />
+/// <reference path="../Libs/Handlebars/handlebars.js" />
+/// <reference path="../Libs/Ember/ember.js" />
 
-
-App.peopleController = Em.ArrayController.create({
-    content: App.Person.findAll()
-});
+var App = Ember.Application.create(); 

@@ -52,6 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Index.htm" />
+    <Content Include="Libs\Ember\ember.js" />
+    <Content Include="Libs\Handlebars\handlebars.js" />
+    <Content Include="Libs\JQuery\jquery.js" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\Person.js" />
+    <Content Include="Scripts\PeopleController.js" />
+    <Content Include="Scripts\RadioButtonsMVVM.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -63,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
