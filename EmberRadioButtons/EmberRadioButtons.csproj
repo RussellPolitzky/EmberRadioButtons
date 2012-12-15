@@ -20,6 +20,10 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,7 +67,12 @@
     <Content Include="Libs\Handlebars\handlebars.js" />
     <Content Include="Libs\JQuery\jquery.js" />
     <Content Include="Sample.htm" />
-    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\ApplicationController.js" />
+    <Content Include="Scripts\ApplicationView.js" />
+    <Content Include="Scripts\MutexButtonModel.js" />
+    <Content Include="Scripts\Router.js" />
+    <Content Include="Scripts\ToggleButton.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
