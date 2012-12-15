@@ -72,6 +72,7 @@
     <Content Include="Scripts\MutexButtonModel.js" />
     <Content Include="Scripts\Router.js" />
     <Content Include="Scripts\ToggleButton.js" />
+    <Content Include="Todo.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

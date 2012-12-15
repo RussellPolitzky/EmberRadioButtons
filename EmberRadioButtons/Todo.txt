@@ -1,0 +1,5 @@
+﻿
+1.) Use an array controller for this.
+2.) Use foreach in the view to display the radio buttons.
+3.) Make a control out of this.
+4.) Make it look reasonable.
