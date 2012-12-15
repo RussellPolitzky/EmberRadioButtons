@@ -32,6 +32,7 @@ App.ToggleButton = Ember.View.extend(Ember.TargetActionSupport, {
     click: function (event) {
         var pressed = this.get('pressed');
         this.set('pressed', !pressed);
+        debugger;
 
         // Check if the button has an explicit target specified
         if (!this.get('target')) {
@@ -45,7 +46,6 @@ App.ToggleButton = Ember.View.extend(Ember.TargetActionSupport, {
                 }
             }
         }
-        
         // Invoke the action on the target
         this.triggerAction.apply(this);
     }
