@@ -1,26 +1,109 @@
 var App = Ember.Application.create();
 
 
-App.MutexButtonModel = Ember.Object.extend(
-    (function () {
-        var buttonField = [true, false, true, false];
-        return {
-            button1: buttonField[0],
-            button2: buttonField[1],
-            button3: buttonField[2],
-            button4: buttonField[3]
-        };
-    }())
-);
+App.MutexButtonModel = Ember.Object.extend({
+    
+    _flags: [false, false, false, false],
+    
+    init: function () {
+        this.set('_flags', [true, false, false, false]);
+    },
+    
+    pushButton: function (number) {
+        var len = this.get('_flags').length;
+        var flags = [];
+        for (var i = 0; i < len; i++) { flags[i] = false; }
+        flags[number-1] = true;
+        this.set('_flags', flags);
+    },
+    
+    releaseButton: function (number) {
+        this.get('_flags')[number-1] = false;
+    },
+
+    getButtonState: function(number) {
+        return this.get('_flags')[number-1];
+    },
+
+    selectedButton: function () {
+        var flags = this.get('_flags'),
+            i = 0,
+            found = 0;
+        flags.forEach(function (flag) {
+            i = i + 1;
+            if (flag) {
+                found = i;
+            }
+        });
+        return found;
+    }.property('_flags'),
+
+    button1: function (key, value) {
+        if (arguments.length === 1) { // getter
+            return this.getButtonState(1);
+        } else {
+            if (value === true) {
+                this.pushButton(1);
+                return value;
+            } else {
+                this.releaseButton(1);
+                return value;
+            }
+        }
+    }.property('_flags'),
+    
+
+    button2: function (key, value) {
+        if (arguments.length === 1) { // getter
+            return this.getButtonState(2);
+        } else {
+            if (value === true) {
+                this.pushButton(2);
+                return value;
+            } else {
+                this.releaseButton(2);
+                return value;
+            }
+        }
+    }.property('_flags'),
+
+
+    button3: function (key, value) {
+        if (arguments.length === 1) { // getter
+            return this.getButtonState(3);
+        } else {
+            if (value === true) {
+                this.pushButton(3);
+                return value;
+            } else {
+                this.releaseButton(3);
+                return value;
+            }
+        }
+    }.property('_flags'),
+
+
+    button4: function (key, value) {
+        if (arguments.length === 1) { // getter
+            return this.getButtonState(4);
+        } else {
+            if (value === true) {
+                this.pushButton(4);
+                return value;
+            } else {
+                this.releaseButton(4);
+                return value;
+            }
+        }
+    }.property('_flags'),
+});
 
 
 App.ApplicationController = Ember.Controller.extend({
-    //content: App.Model.create(),
     changeName: function () {
         var name = this.get('content.name');
-        this.set('content.name', name + '1');
     },
-    data: new App.MutexButtonModel()
+    data: App.MutexButtonModel.create()
 });
 
 

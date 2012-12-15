@@ -6495,7 +6495,7 @@ if (Ember.EXTEND_PROTOTYPES === true || Ember.EXTEND_PROTOTYPES.Function) {
     @method observes
     @for Function
   */
-  Function.prototype.observes = function() {
+  Function.prototype.propertyobserves = function() {
     this.__ember_observes__ = a_slice.call(arguments);
     return this;
   };
