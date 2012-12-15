@@ -1,5 +1,9 @@
 ﻿/// <reference path="app.js" />
 
+//------------------------------------------------
+// Router with a single route.
+// (this is a single page application)
+//------------------------------------------------
 App.Router = Ember.Router.extend({
     root: Ember.Route.extend({
         index: Ember.Route.extend({
@@ -13,4 +17,5 @@ App.Router = Ember.Router.extend({
     })
 });
 
+// Start the application
 App.initialize();

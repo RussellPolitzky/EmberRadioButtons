@@ -15,27 +15,40 @@ App.MutexButtonModel = Ember.Object.extend({
         this.set('_flags', [false, false, false, false]);
     },
 
-    pushButton: function (number) {
+    activateButton: function (number) {
     	/// <summary>
-    	/// 
+    	/// Called to signify that a button has been pushed.
     	/// </summary>
-    	/// <param name="number">the button number to push</param>
+    	/// <param name="number">number of the button number to push</param>
         var len = this.get('_flags').length;
         var flags = [];
         for (var i = 0; i < len; i++) { flags[i] = false; }
         flags[number - 1] = true;
-        this.set('_flags', flags);
+        this.set('_flags', flags); // Build a new array and assign it to ensure binding triggers.
     },
 
     releaseButton: function (number) {
+    	/// <summary>
+    	/// Releases a button.
+    	/// </summary>
+    	/// <param name="number">number of the button to release</param>
         this.get('_flags')[number - 1] = false;
     },
 
     getButtonState: function (number) {
+    	/// <summary>
+    	/// Gets the current state of the given button.
+    	/// </summary>
+    	/// <param name="number"></param>
+    	/// <returns type="">Number of button who''s state should be checked.</returns>
         return this.get('_flags')[number - 1];
     },
 
     selectedButton: function () {
+    	/// <summary>
+    	/// Returns the number of the button that's been selected.
+    	/// </summary>
+    	/// <returns type=""></returns>
         var flags = this.get('_flags'),
             i = 0,
             found = 0;
@@ -49,11 +62,17 @@ App.MutexButtonModel = Ember.Object.extend({
     }.property('_flags'),
 
     button1: function (key, value) {
+    	/// <summary>
+    	/// Computed property representing the state of this button
+    	/// </summary>
+    	/// <param name="key"></param>
+    	/// <param name="value"></param>
+    	/// <returns type=""></returns>
         if (arguments.length === 1) { // getter
             return this.getButtonState(1);
         } else {
             if (value === true) {
-                this.pushButton(1);
+                this.activateButton(1);
                 return value;
             } else {
                 this.releaseButton(1);
@@ -64,11 +83,17 @@ App.MutexButtonModel = Ember.Object.extend({
 
 
     button2: function (key, value) {
+        /// <summary>
+        /// Computed property representing the state of this button
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns type=""></returns>        
         if (arguments.length === 1) { // getter
             return this.getButtonState(2);
         } else {
             if (value === true) {
-                this.pushButton(2);
+                this.activateButton(2);
                 return value;
             } else {
                 this.releaseButton(2);
@@ -79,11 +104,17 @@ App.MutexButtonModel = Ember.Object.extend({
 
 
     button3: function (key, value) {
+        /// <summary>
+        /// Computed property representing the state of this button
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns type=""></returns>        
         if (arguments.length === 1) { // getter
             return this.getButtonState(3);
         } else {
             if (value === true) {
-                this.pushButton(3);
+                this.activateButton(3);
                 return value;
             } else {
                 this.releaseButton(3);
@@ -94,11 +125,17 @@ App.MutexButtonModel = Ember.Object.extend({
 
 
     button4: function (key, value) {
+        /// <summary>
+        /// Computed property representing the state of this button
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns type=""></returns>        
         if (arguments.length === 1) { // getter
             return this.getButtonState(4);
         } else {
             if (value === true) {
-                this.pushButton(4);
+                this.activateButton(4);
                 return value;
             } else {
                 this.releaseButton(4);
