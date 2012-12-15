@@ -12,14 +12,27 @@ App.MutexButtonModel = Ember.Object.extend({
     	/// <summary>
     	/// Initialises the model 
     	/// </summary>
-        this.set('_flags', [false, false, false, false]);
+        this.set('_flags', Ember.A([true, false, false, false]));
     },
+
+    buttons: function () {
+    	/// <summary>
+    	/// Exposes the button flags as read only.
+    	/// </summary>
+    	/// <returns type=""></returns>
+        return this.get('_flags');
+    }.property('_flags'),
+    
+    buttonListener: function() {
+        console.log('flags is about to change');
+    }.property('*_flags.[]'),
+        //.observes('*_flags.[]'),
 
     activateButton: function (number) {
     	/// <summary>
     	/// Called to signify that a button has been pushed.
     	/// </summary>
-    	/// <param name="number">number of the button number to push</param>
+        /// <param name="number">number of the button number to push</param>
         var len = this.get('_flags').length;
         var flags = [];
         for (var i = 0; i < len; i++) { flags[i] = false; }
@@ -31,8 +44,11 @@ App.MutexButtonModel = Ember.Object.extend({
     	/// <summary>
     	/// Releases a button.
     	/// </summary>
-    	/// <param name="number">number of the button to release</param>
-        this.get('_flags')[number - 1] = false;
+        /// <param name="number">number of the button to release</param>
+        //var len = this.get('_flags').length;
+        //var flags = [];
+        //for (var i = 0; i < len; i++) { flags[i] = false; }
+        //this.set('_flags', flags); // Build a new array and assign it to ensure binding triggers.
     },
 
     getButtonState: function (number) {
@@ -54,12 +70,10 @@ App.MutexButtonModel = Ember.Object.extend({
             found = 0;
         flags.forEach(function (flag) {
             i = i + 1;
-            if (flag) {
-                found = i;
-            }
+            if (flag) { found = i; }
         });
         return found;
-    }.property('_flags'),
+    }.property('_flags.[]'),
 
     button1: function (key, value) {
     	/// <summary>

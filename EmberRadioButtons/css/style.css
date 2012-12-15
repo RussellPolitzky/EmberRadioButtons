@@ -89,17 +89,7 @@ a:hover { color: #036; }
 
 button { border: 2px outset; }
 
-.toolbar {
-    background: buttonface;
-    background-color: teal;
-    height: 8%;
-    left: 23%;
-    margin: 1em;
-    padding: 1em;
-    position: absolute;
-    text-align: center;
-    width: 46%;
-}
+/*  Some rather crude styles for my toggle buttons. */
 
 .up { border: 2px outset; }
 
@@ -108,6 +98,9 @@ button { border: 2px outset; }
     border: 2px inset;
 }
 
+.padded {
+    margin: 30px;
+}
 
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .hidden { display: none; visibility: hidden; }
