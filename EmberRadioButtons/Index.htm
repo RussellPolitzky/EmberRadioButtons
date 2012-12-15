@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <script src="Libs/JQuery/jquery.js" type="text/javascript"></script>
+        <script src="Libs/Handlebars/handlebars.js" type="text/javascript"></script>
+        <script src="Libs/Ember/ember.js" type="text/javascript"></script>
+        <script src="Scripts/Person.js" type="text/javascript"></script>
+
+        <title>Radio Buttons and Presentation Model in Ember</title>
+    </head>
+    <body>
+        
+        <script type="text/x-handlebars">
+        {{#view App.UserView }}
+        <b>Name:</b> {{name}}
+        {{/view}}
+        </script>
+
+        <h1>Radio Buttons and Presentation Model in Ember</h1>
+        <h1>People</h1>
+        
+        <button onclick="btnTest_OnClick()" id="btnTest">Click me to change</button>
+
+    </body>
+</html>
