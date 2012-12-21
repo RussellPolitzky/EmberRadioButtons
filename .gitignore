@@ -29,28 +29,8 @@ _ReSharper*/
 .~ml
 ~*
 .orig
-KomodoUI.UI/Komodo.html
-KomodoUI.UI/KomodoTests.html
-KomodoUI.UI/Default.html
-KomodoUI.UI/AllTests.html
-KomodoUI.UI/AllKomodoTests.html
-KomodoUI.UI/InfrastructureTests.html
-KomodoUI.UI/UFETests.html
-KomodoUI.UI/Tests.html
-KomodoUI.UI/tests.html
 ModulePackage.js
 *_view.js
-KomodoUI.UI/komodo.min.css
-KomodoUI.UI/komodo.min.js
-KomodoUI.UI/komodotests.min.css
-KomodoUI.UI/komodotests.min.js
-KomodoUI.UI/allkomodotests.min.css
-KomodoUI.UI/allkomodotests.min.js
-KomodoUI.UI/ufetests.min.css
-KomodoUI.UI/ufetests.min.js
-KomodoUI.UI/jsTestDriver.conf
-KomodoUI.UI/jsTestDriverUnitTest.conf
-KomodoUI.UI/jsTestDriverIntegrationTest.conf
 *Tests.xml
 *Test.xml
 *coverage.dat
@@ -58,9 +38,6 @@ Coverage/
 *func*.html
 *sort*.html
 *gcov.html
-index.html
-KomodoUI.UI/jsTestDriver*.conf
-KomodoUI.UI/jsTestDriver*.coverage
 TEST-*
 
 
