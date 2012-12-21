@@ -69,6 +69,7 @@
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\ApplicationController.js" />
     <Content Include="Scripts\ApplicationView.js" />
+    <Content Include="Scripts\NewButtonModel.js" />
     <Content Include="Scripts\MutexButtonModel.js" />
     <Content Include="Scripts\Router.js" />
     <Content Include="Scripts\ToggleButton.js" />

@@ -157,4 +157,5 @@ App.MutexButtonModel = Ember.Object.extend({
             }
         }
     }.property('_flags'),
+
 });

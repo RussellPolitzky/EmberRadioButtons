@@ -1,4 +1,6 @@
 ﻿/// <reference path="app.js" />
+/// <reference path="MutexButtonModel.js" />
+/// <reference path="NewButtonModel.js" />
 
 //------------------------------------------------
 // Application controller - this is the controller
@@ -12,7 +14,8 @@ App.ApplicationController = Ember.Controller.extend({
     	/// </summary>
         console.log('changeName event has been fired.');
     },
-    data: App.MutexButtonModel.create()
+    data: App.MutexButtonModel.create(),
+    data2: App.NewButtonModel.create()
 });
 
 
