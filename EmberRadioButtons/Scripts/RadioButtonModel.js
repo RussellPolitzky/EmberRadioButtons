@@ -7,6 +7,9 @@
 App.RadioButtonModel = Ember.Object.extend({   
     _previousButton: undefined,
     _numberOfButtons: undefined,
+    
+    // The model exposes this property, an array of buttons,
+    // to which the UI can bind ... with a few lines in Ember.js.
     buttons: undefined,
 
     init: function() {
