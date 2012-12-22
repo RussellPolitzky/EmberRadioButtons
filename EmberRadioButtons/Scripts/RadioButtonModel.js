@@ -4,7 +4,7 @@
 // Mutually exclusive button model for the  
 // set of radio buttons.
 //------------------------------------------------
-App.NewButtonModel = Ember.Object.extend({   
+App.RadioButtonModel = Ember.Object.extend({   
     _previousButton: undefined,
     _numberOfButtons: undefined,
     buttons: undefined,

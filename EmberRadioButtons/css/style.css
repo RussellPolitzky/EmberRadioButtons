@@ -91,11 +91,18 @@ a:hover { color: #036; }
 
 /*  Some rather crude styles for my toggle buttons. */
 
-.up { border: 2px outset; }
+.up {
+    border: 0px;
+    width: 76px;
+    height: 71px;
+    background-image:url('/Images/radiobuttonoff.png');
+}
 
 .dn {
-    background: buttonhighlight;
-    border: 2px inset;
+    border: 0px;
+    width: 76px;
+    height: 71px;
+    background-image:url('/Images/radiobuttonon.png');
 }
 
 .padded {

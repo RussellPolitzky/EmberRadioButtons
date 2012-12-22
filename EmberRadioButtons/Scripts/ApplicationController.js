@@ -1,12 +1,20 @@
 ﻿/// <reference path="app.js" />
 /// <reference path="MutexButtonModel.js" />
-/// <reference path="NewButtonModel.js" />
+/// <reference path="RadioButtonModel.js" />
 
 //------------------------------------------------
 // Application controller - this is the controller
 // for the root state.
 //------------------------------------------------
 App.ApplicationController = Ember.Controller.extend({
+    
+    data: undefined,
+
+    init: function () {
+        // Initialise this instance with its model.
+        this.set('data', App.RadioButtonModel.create());
+    },
+
     // Events
     changeName: function () {
     	/// <summary>
@@ -15,16 +23,25 @@ App.ApplicationController = Ember.Controller.extend({
         console.log('changeName event has been fired.');
     },
     
-    addButton: function() {
-        this.get('data2').addButton();
+    addButton: function () {
+    	/// <summary>
+        /// Instruct the model to add a button.
+        /// Notice all we have to do is to change
+        /// the state of the model and the binding
+        /// takes care of the rest.
+    	/// </summary>
+        this.get('data').addButton();
     },
 
     removeButton: function () {
-        this.get('data2').removeButton();
+    	/// <summary>
+        /// Instruct the model to remove a button.
+        /// Notice how all we have to do is to change
+        /// the state of the model and the binding 
+        /// takes care of the rest.
+    	/// </summary>
+        this.get('data').removeButton();
     },
-
-    data: App.MutexButtonModel.create(),
-    data2: App.NewButtonModel.create()
 });
 
 
