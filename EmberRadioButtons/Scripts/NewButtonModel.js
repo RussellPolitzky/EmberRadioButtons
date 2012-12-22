@@ -7,6 +7,8 @@
 App.NewButtonModel = Ember.Object.extend({
    
     _previousButton: undefined,
+    
+    numberOfButtons: undefined,
 
     buttons: undefined,
 
@@ -16,7 +18,13 @@ App.NewButtonModel = Ember.Object.extend({
                 Ember.Object.create({ pressed: false }),
                 Ember.Object.create({ pressed: false })
         ]);
+        this._setNumberOfButtons();
     },    
+
+    _setNumberOfButtons: function() {
+        this.set('numberOfButtons', this.get('buttons').length);
+    },
+
 
     addButton: function() {
         this.get('buttons').pushObject(Ember.Object.create({ pressed: false }));
@@ -33,9 +41,19 @@ App.NewButtonModel = Ember.Object.extend({
 
         var previousButtonNumber,
             buttons,
-            index,
-            found,
-            foundIndex;
+            index = 0,
+            found = false,
+            foundIndex,
+            buttonsDefined = function() {
+                return this.get('buttons');
+            };
+
+        // if buttons have been added, then don't do any of this.
+        if (this.get('buttons').length != this.get('numberOfButtons')) {
+            this._setNumberOfButtons();
+            return;
+        }
+
 
         if (this.get('buttons')) {
             buttons = this.get('buttons');
@@ -45,13 +63,15 @@ App.NewButtonModel = Ember.Object.extend({
                 buttons.objectAt(previousButtonNumber).set('pressed', false);
             }
             
-            index = 0;
-            found = false;
+            //index = 0;
+            //found = false;
             while (!found && index < buttons.length) {
                 found = buttons.objectAt(index).get('pressed');
                 index = index + 1;
             }
             foundIndex = index - 1;
+            
+
             if (found) {
                 this.set('_previousButton', foundIndex);
             } else {
