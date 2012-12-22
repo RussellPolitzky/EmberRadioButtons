@@ -1,82 +1,94 @@
 ﻿/// <reference path="app.js" />
 
 //------------------------------------------------
-// Mutually exclusive button model for the a 
+// Mutually exclusive button model for the  
 // set of radio buttons.
 //------------------------------------------------
-App.NewButtonModel = Ember.Object.extend({
-   
+App.NewButtonModel = Ember.Object.extend({   
     _previousButton: undefined,
-    
-    numberOfButtons: undefined,
-
+    _numberOfButtons: undefined,
     buttons: undefined,
 
-    init: function () {
+    init: function() {
+        /// <summary>
+        ///  Initialize with three buttons ...
+        /// </summary>
         this.set('buttons', [
-                Ember.Object.create({ pressed: false }),
-                Ember.Object.create({ pressed: false }),
-                Ember.Object.create({ pressed: false })
+            Ember.Object.create({ pressed: false }),
+            Ember.Object.create({ pressed: false }),
+            Ember.Object.create({ pressed: false })
         ]);
         this._setNumberOfButtons();
-    },    
-
-    _setNumberOfButtons: function() {
-        this.set('numberOfButtons', this.get('buttons').length);
     },
 
+    _setNumberOfButtons: function () {
+    	/// <summary>
+    	/// Records the number of buttons in the set.
+    	/// </summary>
+        this.set('_numberOfButtons', this.get('buttons').length);
+    },
+  
+    _setState: function() {
+        /// <summary>
+        ///  Logic ensures that only one button is pressed
+        ///  at any one time.
+        /// </summary>
+        var me = this,
+            previousButtonNumber = me.get('_previousButton'),
+            buttons = me.get('buttons'),
+            index = 0,
+            found = false,
+            newNumberOfButtons = buttons.length,
+            oldNumberOfButtons = me.get('_numberOfButtons'),
+            buttonsDefined = function() {
+                return buttons;
+            },
+            recordPressedButton = function() {
+                index = buttons.indexOf(buttons.findProperty('pressed', true));
+                found = index > -1;
+                if (found) {
+                    me.set('_previousButton', index);
+                } else {
+                    me.set('_previousButton', undefined);
+                }
+            },
+            unsetPreviousButton = function() {
+                if (newNumberOfButtons < (previousButtonNumber - 1)) {
+                    me.set('_previousButton', undefined);
+                    return;
+                }
+                if (me.get('_previousButton') != undefined) {
+                    buttons.objectAt(previousButtonNumber).set('pressed', false);
+                }
+            },
+            numberOfButtonsHasChanged = function() {
+                return newNumberOfButtons != oldNumberOfButtons;
+            };
 
-    addButton: function() {
-        this.get('buttons').pushObject(Ember.Object.create({ pressed: false }));
+        if (buttonsDefined()) {
+            if (numberOfButtonsHasChanged()) {
+                this._setNumberOfButtons();
+
+            } else {
+                unsetPreviousButton(buttons);
+            }
+            recordPressedButton(buttons);
+        }
+    }.propertyobserves('buttons.@each.pressed'),
+
+    addButton: function () {
+    	/// <summary>
+    	/// Adds a button to the set.
+        /// </summary>
+        var buttons = this.get('buttons');
+        buttons.pushObject(Ember.Object.create({ pressed: false }));
     },
 
     removeButton: function () {
-        this.get('buttons').removeAt(0);
-    },
-
-    setState: function() {
-        /// <summary>
-        /// 
-        /// </summary>
-
-        var previousButtonNumber,
-            buttons,
-            index = 0,
-            found = false,
-            foundIndex,
-            buttonsDefined = function() {
-                return this.get('buttons');
-            };
-
-        // if buttons have been added, then don't do any of this.
-        if (this.get('buttons').length != this.get('numberOfButtons')) {
-            this._setNumberOfButtons();
-            return;
-        }
-
-
-        if (this.get('buttons')) {
-            buttons = this.get('buttons');
-            
-            if (this.get('_previousButton') != undefined) {
-                previousButtonNumber = this.get('_previousButton');
-                buttons.objectAt(previousButtonNumber).set('pressed', false);
-            }
-            
-            //index = 0;
-            //found = false;
-            while (!found && index < buttons.length) {
-                found = buttons.objectAt(index).get('pressed');
-                index = index + 1;
-            }
-            foundIndex = index - 1;
-            
-
-            if (found) {
-                this.set('_previousButton', foundIndex);
-            } else {
-                this.set('_previousButton', undefined);
-            }
-        }
-    }.propertyobserves('buttons.@each.pressed')
+    	/// <summary>
+    	/// Removes a button from the set.
+    	/// </summary>
+        var buttons = this.get('buttons');
+        buttons.removeAt(buttons.length - 1);
+    }
 })
