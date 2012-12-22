@@ -19,16 +19,20 @@
         <!-- An Ember Handlebars Template for the page -->
         <script type="text/x-handlebars" data-template-name="application">
             <table class="padded">
-                <tr>
-                    <td>
-                        <H1>Ember.js Radio Buttons</H1> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        </br>
-                    </td>
-                </tr>                               
+                <tr><td><H1>22 December 2012 - Russell Politzky</H1></td></tr>
+                <tr><td></br></td></tr>  
+                <tr><td><H1>Ember.js Radio Buttons</H1></td></tr>
+                <tr><td></br></td></tr>  
+                <tr><td>Ember makes extensive of the observer pattern and offers, declarative two way binding.</td></tr>
+                <tr><td>In addition, Ember uses the a state machine to manage its notion of pages and routes.</td></tr>  
+                <tr><td>Click a radio button below to activate it.  Click the buttons below to add and remove</td></tr>                      
+                <tr><td>radio buttons from the group.</td></tr>  
+                <tr><td></br></td></tr>
+                <tr><td>The logic for this set of radio buttons is contained in the RadioButtonModel.js.</td></tr>  
+                <tr><td>Ember's binding model which is a declarative implementation of the Observer pattern</td></tr>  
+                <tr><td>makes the view, 'just work', even when buttons are dynamically added and removed from</td></tr>  
+                <tr><td>from the model.</td></tr> 
+                <tr><td></br></td></tr>  
                 <tr>
                     <td>
                         {{#each data.buttons}}
@@ -36,27 +40,19 @@
                         {{/each}}
                     </td>
                 </tr>            
-                <tr>
-                    <td>
-                        </br>
-                    </td>
-                </tr>                  
-                <tr>
-                    <td>
-                        </br>
-                    </td>
-                </tr>             
+                <tr><td></br></td></tr>  
+                <tr><td></br></td></tr>        
                 <tr>
                     <td>
                         {{#view App.Button action='addButton' target='App.router'}}Add Button{{/view}}
                         {{#view App.Button action='removeButton' target='App.router'}}Remove Button{{/view}}
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        </br>
-                    </td>
-                </tr>  
+                <tr><td></br></td></tr>
+                <tr><td>The state of each radio button may be shown by binding to the array of buttons</td></tr>  
+                <tr><td>in the model.  The state of all of the buttons is shown in the rows below to</td></tr>  
+                <tr><td>illustrate the two way binding.</td></tr>  
+                <tr><td></br></td></tr>              
                 {{#each data.buttons}}
                 <tr><td>pressed: {{pressed}}</td></tr>
                 {{/each}}
