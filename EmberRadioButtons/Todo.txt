@@ -1,4 +1,0 @@
-﻿
-
-0.) Fix the bug - when adding a new button, the one that's pressed turns off.
-1.) Clean the code up
