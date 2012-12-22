@@ -5,47 +5,58 @@
 // set of radio buttons.
 //------------------------------------------------
 App.NewButtonModel = Ember.Object.extend({
-
+   
     _previousButton: undefined,
 
-    buttons: [
-        Ember.Object.create({ pressed: true }),
-        Ember.Object.create({ pressed: false }),
-        Ember.Object.create({ pressed: false })
-    ],
+    buttons: undefined,
 
-    init: function() {
-        /// <summary>
-        /// 
-        /// </summary>
-
-
-        //var buttonArrayProxy = Ember.ArrayProxy.create({
-        //    content: Ember.A([{ pressed: true }, { pressed: false }, { pressed: false }])
-        //});
-
-        this.set('_previousButton', 0);
-      
-        //this.set('buttons', buttonArrayProxy);
+    init: function () {
+        this.set('buttons', [
+                Ember.Object.create({ pressed: false }),
+                Ember.Object.create({ pressed: false }),
+                Ember.Object.create({ pressed: false })
+        ]);
     },    
 
-    setState: function(arg) {
+    addButton: function() {
+        this.get('buttons').pushObject(Ember.Object.create({ pressed: false }));
+    },
+
+    removeButton: function () {
+        this.get('buttons').removeAt(0);
+    },
+
+    setState: function() {
         /// <summary>
         /// 
         /// </summary>
+
+        var previousButtonNumber,
+            buttons,
+            index,
+            found,
+            foundIndex;
+
         if (this.get('buttons')) {
-            var previousButtonNumber = this.get('_previousButton');
-            var buttons = this.get('buttons');
-            buttons.objectAt(previousButtonNumber).set('pressed', false);
-            var index = 0;
-            var found = false;
+            buttons = this.get('buttons');
             
+            if (this.get('_previousButton') != undefined) {
+                previousButtonNumber = this.get('_previousButton');
+                buttons.objectAt(previousButtonNumber).set('pressed', false);
+            }
+            
+            index = 0;
+            found = false;
             while (!found && index < buttons.length) {
                 found = buttons.objectAt(index).get('pressed');
                 index = index + 1;
             }
-            var foundIndex = index - 1;
-            this.set('_previousButton', foundIndex);
+            foundIndex = index - 1;
+            if (found) {
+                this.set('_previousButton', foundIndex);
+            } else {
+                this.set('_previousButton', undefined);
+            }
         }
     }.propertyobserves('buttons.@each.pressed')
 })

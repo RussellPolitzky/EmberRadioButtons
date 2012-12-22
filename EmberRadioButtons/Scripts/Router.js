@@ -13,7 +13,19 @@ App.Router = Ember.Router.extend({
         // Event handlers.
         changeName: function (router) {
             router.get('applicationController').changeName(); // Router delegates to the controller.
+        },
+
+        addButton: function (router) {
+            router.get('applicationController').addButton();
+        },
+        
+
+
+        removeButton: function (router) {
+            router.get('applicationController').removeButton();
         }
+        
+
     })
 });
 

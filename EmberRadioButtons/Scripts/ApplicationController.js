@@ -14,6 +14,15 @@ App.ApplicationController = Ember.Controller.extend({
     	/// </summary>
         console.log('changeName event has been fired.');
     },
+    
+    addButton: function() {
+        this.get('data2').addButton();
+    },
+
+    removeButton: function () {
+        this.get('data2').removeButton();
+    },
+
     data: App.MutexButtonModel.create(),
     data2: App.NewButtonModel.create()
 });
