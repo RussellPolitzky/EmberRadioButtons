@@ -24,7 +24,11 @@
                         Ember.js Radio Buttons 
                     </td>
                 </tr>
-                               
+                <tr>
+                    <td>
+                        </br>
+                    </td>
+                </tr>                               
             
                 <tr>
                     <td>
@@ -34,20 +38,42 @@
                     </td>
                 </tr>            
             
+            
                 <tr>
                     <td>
-                        {{#each data2.buttons}}
-                        pressed: {{pressed}}
-                        {{/each}}
+                        </br>
                     </td>
-                </tr>  
+                </tr>                  
+
+               
             
+
+                <tr>
+                    <td>
+                        </br>
+                    </td>
+                </tr>             
+
                 <tr>
                     <td>
                         {{#view App.Button action='addButton' target='App.router'}}Add Button{{/view}}
                         {{#view App.Button action='removeButton' target='App.router'}}Remove Button{{/view}}
                     </td>
                 </tr>
+            
+            
+            
+                <tr>
+                    <td>
+                        </br>
+                    </td>
+                </tr>  
+            
+             
+                        {{#each data2.buttons}}
+                        <tr><td>  pressed: {{pressed}}  </td></tr>
+                        {{/each}}
+               
 
             </table>
         </script>
